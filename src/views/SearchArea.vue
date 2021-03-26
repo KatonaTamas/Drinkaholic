@@ -3,7 +3,6 @@
         <header>
         <div class="slogan_container">
             <h3>Search through Brewdog's expansive back catalogue of beer.</h3>
-            <!--<h4>Hurry up and find your new lifelong friend.</h4>-->
         </div>
         <form class="search-area" @submit="getBeer">
             <input type="text" v-model="beerInput" name="beer-input" placeholder="Search for beer">
@@ -13,7 +12,7 @@
     </section>
     <hr class="line">
     <section class="card_container" v-if="Object.keys(searchedBeer).length != 0">
-        <Card :id="searchedBeer.id" :imgSrc="searchedBeer.image_url" :name="searchedBeer.name" :tagline="searchedBeer.tagline" :description="searchedBeer.description"/>
+        <Card class="_card" :id="searchedBeer.id" :imgSrc="searchedBeer.image_url" :name="searchedBeer.name" :tagline="searchedBeer.tagline" :description="searchedBeer.description"/>
     </section>
 </template>
 
@@ -46,13 +45,40 @@ export default {
 </script>
 
 <style>
-    .line {
-        margin: 0 auto;
-        height: 1px;
-        width: 80%;
-        background-color: #2b2e4a;
-        opacity: .1;
+    
+
+    /* Breakpoints */
+    @media only screen and (min-width: 768px) {
+        .card_container {
+            width: 85%;
+        }
+
+        ._card {
+            width: 100%;
+        }
+
+        .slogan_container > h3 {
+            font-size: 1.43rem;
+            margin-bottom: .6rem;
+        }
     }
+
+    @media only screen and (min-width: 992px) {
+        
+        .line {
+            margin: 0 auto;
+            height: 1px;
+            width: 70%;
+            background-color: #2b2e4a;
+            opacity: .1;
+        }
+        
+        .slogan_container {
+        margin: 1rem 0;  
+        text-align: center;  
+        }
+    }
+
 </style>
 
 <style scoped>
@@ -117,5 +143,6 @@ export default {
 
     .card_container {
             margin: 1.65rem 0;
+            width: 75%;
     }
 </style>

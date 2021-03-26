@@ -35,6 +35,7 @@ export default {
   flex-direction: column;
   padding: 0 1rem;
   color: #2b2e4a;
+  overflow-x: hidden;
 }
 
   .result_container {

@@ -16,23 +16,23 @@ export default {
     name: 'Card',
     props: {
         id: {
-            //required: true
+            required: true
         },
         imgSrc: {
             type: String,
-           // required: true
+            required: true
         },
         name: {
             type: String,
-          //  required: true
+            required: true
         },
         tagline: {
             type: String,
-          //  required: true
+            required: true
         },
         description: {
             type: String,
-            //required: true
+            required: true
         }
     }
 }
@@ -76,5 +76,21 @@ export default {
         font-size: .8rem;
         font-weight: 200;
         word-break: keep-all;
+    }
+
+    /* Breakpoints */
+    @media only screen and (min-width: 768px) {
+
+        .infos-wrapper > h2 {
+            font-size: 1.35;
+        }
+
+        .infos-wrapper h3 {
+            font-size: 1.05rem;
+        }
+
+        .infos-wrapper p {
+            font-size: .9rem;
+        }
     }
 </style>
