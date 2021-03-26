@@ -11,13 +11,22 @@
         </header>
     </section>
     <hr class="line">
+    <!-- To display the card component when user is searched I used conditional rendering. 
+    When the 'searchedBeer' object's length is bigger then 0 (so we know that the search went 
+    successfully and we got back data from the API) the Card component is being called. 
+     We are passing the 'searchedBeer' obejct's properties to Card's props (as binding as attribute) 
+     that we defined in the Card component.
+    -->
     <section class="card_container" v-if="Object.keys(searchedBeer).length != 0">
         <Card class="_card" :id="searchedBeer.id" :imgSrc="searchedBeer.image_url" :name="searchedBeer.name" :tagline="searchedBeer.tagline" :description="searchedBeer.description"/>
     </section>
 </template>
 
 <script>
+// Importing axios for easily fetching
 import axios from 'axios';
+
+// Importing Components
 import Card from '../components/Card';
 import Header from '../components/Header';
 
@@ -36,12 +45,20 @@ export default {
     methods: {
         async getBeer(e) {
             e.preventDefault();
-            //make request
+            //Make the request
+            /*Adding it to a try-catch to handle any problem while fetchin. By this way the website will doesn't crash
+            on any error.
+            */
             try {
+                //Make request based on User's search (searchbar's input)
                 const response = await axios.get(`https://api.punkapi.com/v2/beers?beer_name=${this.beerInput}`)
+                /*When got back any response, it will going to be extracted to this component's datas. So we
+                can use them inside this component or could be used somewhere el in the code. (e.g with vuex)
+                */
                 this.searchedBeer = response.data[0];
             } catch (error) {
                 if(error.response) {
+                    // When an error occures, it will inform the user in the console.
                     console.alert(`An error has occured - : ${error.response}`);
                 }
             }

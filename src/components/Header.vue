@@ -5,6 +5,7 @@
                 <h2>{{ title }}</h2>
             </div>
             <ul>
+                <!--We are using here routes to be able to switch 'Search' and 'All Bears view'-->
                 <li>
                     <router-link to="/" class="router-link">Search</router-link>
                 </li>

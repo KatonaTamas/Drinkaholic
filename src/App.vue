@@ -4,6 +4,7 @@
     <router-link to="/about">About</router-link>
   </div>-->
   <Header title="Drinkaholic"/>
+    <!--Using router view here, so when we route between components, it will displayed here by that-->
     <router-view/>
 </template>
 
@@ -11,17 +12,13 @@
 
 import Header from './components/Header';
 
+//Import axios here to window, so we can use 'axios' everywhere in our app
 window.axios = require('axios');
 
 export default { 
   name: 'App',
   components: {
     Header
-  },
-  data() {
-    return {
-      beer: {}
-    }
   }
 }
 </script>

@@ -1,4 +1,5 @@
 <template>
+    <!--When this component gets called and get datas we are displaying it here, from props-->
     <div class="card" :key="id">
         <div class="image-wrapper">
           <img :src="imgSrc" :alt="name">
@@ -14,6 +15,7 @@
 <script>
 export default {
     name: 'Card',
+    //For the props we are using 'required' so when this component gets called, we must pass data as attributes
     props: {
         id: {
             required: true
