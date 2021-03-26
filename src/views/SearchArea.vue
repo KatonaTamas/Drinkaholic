@@ -37,8 +37,16 @@ export default {
         async getBeer(e) {
             e.preventDefault();
             //make request
-            await axios.get(`https://api.punkapi.com/v2/beers?beer_name=${this.beerInput}`)
-                    .then(response => this.searchedBeer = response.data[0])
+            try {
+                const response = await axios.get(`https://api.punkapi.com/v2/beers?beer_name=${this.beerInput}`)
+                this.searchedBeer = response.data[0];
+            } catch (error) {
+                if(error.response) {
+                    console.alert(`An error has occured - : ${error.response}`);
+                }
+            }
+            /*await axios.get(`https://api.punkapi.com/v2/beers?beer_name=${this.beerInput}`)
+                    .then(response => this.searchedBeer = response.data[0])*/
         },
     }
 }

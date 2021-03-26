@@ -26,6 +26,15 @@ export default {
         }
     },
     mounted: async function() {
+
+        try {
+
+        } catch(error) {
+            if(error.response) {
+                console.alert(`An error has occured - : ${error.response}`);
+            }
+        }
+
             await axios.get(`https://api.punkapi.com/v2/beers`)
                               .then(response => this.allBeer = response.data);
 
